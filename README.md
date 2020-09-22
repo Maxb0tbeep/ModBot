@@ -9,3 +9,5 @@ packages used:
     -discord.js
     -nodemon
     -profanities
+
+Also I put it on top.gg here: https://top.gg/bot/757696089028689992
