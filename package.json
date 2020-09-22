@@ -1,0 +1,17 @@
+{
+  "name": "modbot",
+  "version": "1.0.0",
+  "description": "A moderation bot with !ban, !kick, and a swear filter",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maxb01beep",
+  "license": "GPL-3.0 License",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4",
+    "profanities": "^2.14.0"
+  }
+}
