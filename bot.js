@@ -86,18 +86,21 @@ client.on("message", async function(message) {
     }
 
     for (x = 0; x < profanities.length; x++){
-        let msg = message.content.toLowerCase();
-        if (msg.includes(profanities[x])){
-            let profanityEmbed = new discord.MessageEmbed();
-            let profanityWarnMessage = `**${message.author.username}**! You aren't allowed to say that! If you continue with this behavior, You may be **Punished**.`;
-            profanityEmbed.addField("Warning", profanityWarnMessage);
-            profanityEmbed.setColor("#ff3030");
-            profanityEmbed.setAuthor(message.author.tag, message.author.displayAvatarURL());
-            profanityEmbed.setTimestamp();
-            message.delete();
-            message.channel.send(profanityEmbed);
+        if(!message.author.hasPermission("ADMINISTRATOR")){
+            let msg = message.content.toLowerCase();
+                if (msg.includes(profanities[x])){
+                let profanityEmbed = new discord.MessageEmbed();
+                let profanityWarnMessage = `**${message.author.username}**! You aren't allowed to say that! If you continue with this behavior, You may be **Punished**.`;
+                profanityEmbed.addField("Warning", profanityWarnMessage);
+                profanityEmbed.setColor("#ff3030");
+                profanityEmbed.setAuthor(message.author.tag, message.author.displayAvatarURL());
+                profanityEmbed.setTimestamp();
+                message.delete();
+                message.channel.send(profanityEmbed);
             return;
         }
+        }
+        
     } 
 })
 
