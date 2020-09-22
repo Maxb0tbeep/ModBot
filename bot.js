@@ -1,9 +1,9 @@
-require('dotenv').config();
 const discord = require('discord.js');
 const client = new discord.Client();
-const PREFIX = process.env.PREFIX;
-var profanities = require("profanities");
-client.login(process.env.BOT_TOKEN);
+const config = require("./config/config.json");
+const profanities = require("profanities");
+const PREFIX = config.DISCORD_BOT.PREFIX;
+const TOKEN = config.DISCORD_BOT.TOKEN;
 
 var serverAmount;
 
@@ -102,4 +102,4 @@ client.on("message", async function(message) {
 })
 
 
-client.login();
+client.login(TOKEN);
