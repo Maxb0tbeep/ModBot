@@ -67,28 +67,25 @@ client.on("message", async function(message) {
         }
     }
 
+    if(isValidCommand(message, "invite")){
+        message.channel.send("Thanks for using ModBot! If you would like to add me again to another server or join the support server, here are the links!\n\n**Invite**: https://bit.ly/2U01Xiy \n**Join**: https://discord.gg/HVNA99JWD3")
+    }
+
     if(isValidCommand(message, "help")){
-        if(message.author.hasPermission("BAN_MEMBERS" || "KICK_MEMBERS")){
-            message.author.send({embed: {
+        message.author.send({embed: {
             color: "#ff384f",
             title: "Help",
             fields: [
-              { name: "Commands", value: "!ban\n\n!kick\n", inline: true},
-              { name: "Usage", value: "use this to ban other users with their userID\n(you need the ban members permission in a role)\nuse this to kick other users with their userID\n(you need the kick members permission in a role)\n", inline: true}
+              { name: "Commands", value: "~ban\n~kick\n~invite\n", inline: true},
+              { name: "Usage", value: "Ban a user with their userID\nKick a user with their userID\nGet the bot invite and support server join links\n", inline: true}
             ]
           }
         });
-        }
-        else{
-            message.channel.send(`Sorry ${message.author.name}, but you don't have the permissions for any of the commands I can do.`)
-        }
-        
     }
 
     for (x = 0; x < profanities.length; x++){
-        if(!message.author.hasPermission("ADMINISTRATOR")){
             let msg = message.content.toLowerCase();
-                if (msg.includes(profanities[x])){
+            if (msg.includes(profanities[x])){
                 let profanityEmbed = new discord.MessageEmbed();
                 let profanityWarnMessage = `**${message.author.username}**! You aren't allowed to say that! If you continue with this behavior, You may be **Punished**.`;
                 profanityEmbed.addField("Warning", profanityWarnMessage);
@@ -97,10 +94,8 @@ client.on("message", async function(message) {
                 profanityEmbed.setTimestamp();
                 message.delete();
                 message.channel.send(profanityEmbed);
-            return;
         }
-        }
-        
+        return;
     } 
 })
 
