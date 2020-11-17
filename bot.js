@@ -15,7 +15,7 @@ function updateServerCount(){
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
     updateServerCount();
-    client.user.setActivity(`${serverAmount} Servers!`, {type : "WATCHING"});
+    client.user.setActivity(`${serverAmount} Servers! Use ~help`, {type : "WATCHING"});
 })
 
 const isValidCommand = (message, cmdName) => (message.content.toLowerCase().startsWith(PREFIX + cmdName));
