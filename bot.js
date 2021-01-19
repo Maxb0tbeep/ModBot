@@ -15,8 +15,13 @@ function updateServerCount(){
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in`);
     updateServerCount();
-    client.user.setActivity(`${serverAmount} Servers! Use ~help`, {type : "WATCHING"});
+    client.user.setActivity(`${serverAmount} Servers! Use /help`, {type : "WATCHING"});
+
+    client.guilds.cache.forEach(guild => {
+        console.log(`${guild.name} | ${guild.id}`);
+      })
 })
+
 
 const isValidCommand = (message, cmdName) => (message.content.toLowerCase().startsWith(PREFIX + cmdName));
 client.on("message", async function(message) {
@@ -68,7 +73,7 @@ client.on("message", async function(message) {
     }
 
     if(isValidCommand(message, "invite")){
-        message.channel.send("Thanks for using ModBot! If you would like to add me again to another server or join the support server, here are the links!\n\n**Invite**: https://bit.ly/2U01Xiy \n**Join**: https://discord.gg/HVNA99JWD3")
+        message.channel.send("Thanks for using ModBot! If you would like to add me again to another server or join the support server, here are the links!\n\n**Invite**: https://dsc.gg/modbot \n**Join**: https://discord.gg/HVNA99JWD3")
     }
 
     if(isValidCommand(message, "help")){
@@ -76,7 +81,7 @@ client.on("message", async function(message) {
             color: "#ff384f",
             title: "Help",
             fields: [
-              { name: "Commands", value: "~ban\n~kick\n~invite\n", inline: true},
+              { name: "Commands", value: "/ban\n/kick\n/invite\n", inline: true},
               { name: "Usage", value: "Ban a user with their userID\nKick a user with their userID\nGet the bot invite and support server join links\n", inline: true}
             ]
           }
